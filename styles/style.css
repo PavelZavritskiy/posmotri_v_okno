@@ -9,6 +9,10 @@ html {
 }
 
 .page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   margin: auto;
   color: #fff;
   font-family: 'Fira Sans Condensed', sans-serif;
@@ -46,19 +50,11 @@ ol {
   clip-path: inset(50%);
   white-space: nowrap;
 }
-
-.page{
- display: flex;
- flex-wrap: wrap;
- justify-content: center;
- align-items: center;
-}
-
 .content {
+  padding: 0 30px; /* Надеюсь правильно понял, просто кажется в пачке читал, что отступы не нужны. А еще в задании была такая задача ( Задать горизонтальные размеры .content и отступы между его элементами.) Получается это не нужно делать? */
   display: flex;
   align-items: end;
   gap: 30px;
-  width: 1135px;
   margin: 0 auto;
 }
 
@@ -158,24 +154,27 @@ ol {
 }
 
 label span {
-  display: inline-block;
-  margin-right: 1.5px;
-  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-input[type='checkbox'] + span {
+.search-form__pseudo-checkbox {
+  margin-right: 5px;
+}
+
+.search-form__checkbox + span {
   width: 19px;
   height: 19px;
   border: 1px #fff solid;
   background-color: inherit;
 }
 
-input[type='checkbox']:checked + span::after {
+.search-form__checkbox:checked + span::after {
   content: '';
   display: block;
   width: 15px;
   height: 15px;
-  margin: 1px 0 0 1px;
   background-color: #FFF;
 }
 
@@ -229,7 +228,7 @@ input[type='checkbox']:checked + span::after {
 
 .content__list {
   position: relative;
-  height: 298px;
+  height: 291px;
   overflow: hidden auto;
 }
 
@@ -238,18 +237,19 @@ input[type='checkbox']:checked + span::after {
   height: 100%;
 }
 
-.content__video-card-description-container {
-  
-}
-
 .content__list-item:not(:last-child) {
   margin-bottom: 30px;
 }
 
 .content__video-card {
-  display: grid;
+  display: grid; /* Вот тут */
   grid-template-columns: 1fr 194px;
   padding: 2px 0 2px 2px;
+}
+
+.content__video-card-description-container {
+ /* Я сделал родителя гридом и для этого столбца выбрал размер 1fr, получается он занимает всё свободное место. Или это не правильно? Если ставить flex-grow получается надо переделывать  на флекс, ну и кода больше будет, вроде.  */
+
 }
 
 .content__video-card-thumbnail {
@@ -270,7 +270,7 @@ input[type='checkbox']:checked + span::after {
 
 .title {
   margin-bottom: 28px;
-  font-family: Oswald;
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   font-size: 75px;
   line-height: 0.95;
